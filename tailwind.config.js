@@ -5,6 +5,7 @@ export default {
     extend: {},
     fontFamily: {
       ibm: '  "IBM Plex Sans", sans-serif',
+      inter: '"Inter", sans-serif',
     },
   },
   plugins: [],

@@ -7,7 +7,7 @@ const AddStudent = () => {
   const {
     register,
     handleSubmit,
-    // formState: { errors },
+    formState: { errors },
   } = useForm();
 
   const handleAddStudent = (data) => {
@@ -33,8 +33,12 @@ const AddStudent = () => {
               },
             })}
             type="text"
-            placeholder="First Name"
-            className="px-4 py-3 border rounded-md  ouline:none"
+            placeholder={`${
+              errors.firstName ? errors.firstName.message : "First Name"
+            }`}
+            className={`${
+              errors.firstName ? "placeholder:text-red-500" : ""
+            } px-4 py-3 border rounded-md outline-none `}
           />
           <input
             {...register("middleName", {
@@ -44,8 +48,12 @@ const AddStudent = () => {
               },
             })}
             type="text"
-            placeholder="Middle Name"
-            className="px-4 py-3 border rounded-md  ouline:none"
+            placeholder={`${
+              errors.middleName ? errors.middleName.message : "Middle Name"
+            }`}
+            className={`${
+              errors.middleName ? "placeholder:text-red-500" : ""
+            } px-4 py-3 border rounded-md outline-none `}
           />
           <input
             {...register("lastName", {
@@ -55,8 +63,12 @@ const AddStudent = () => {
               },
             })}
             type="text"
-            placeholder="Last Name"
-            className="px-4 py-3 border rounded-md  ouline:none"
+            placeholder={`${
+              errors.lastName ? errors.lastName.message : "Last Name"
+            }`}
+            className={`${
+              errors.lastName ? "placeholder:text-red-500" : ""
+            } px-4 py-3 border rounded-md outline-none `}
           />
           <select
             {...register("class", {
@@ -66,33 +78,37 @@ const AddStudent = () => {
               },
             })}
             defaultValue=""
-            className="px-4 py-3 border rounded-md  ouline:none "
+            className={`${
+              errors.class ? "border border-red-500" : ""
+            } px-4 py-3 border rounded-md outline-none `}
           >
-            <option disabled value="" className="text-gray-400">
+            <option disabled value="">
               Select Class
             </option>
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
-            <option value="6">6</option>
-            <option value="7">7</option>
-            <option value="8">8</option>
-            <option value="9">9</option>
-            <option value="10">10</option>
-            <option value="11">11</option>
-            <option value="12">12</option>
+            <option value="1">I</option>
+            <option value="2">II</option>
+            <option value="3">III</option>
+            <option value="4">IV</option>
+            <option value="5">V</option>
+            <option value="6">VI</option>
+            <option value="7">VII</option>
+            <option value="8">VIII</option>
+            <option value="9">IX</option>
+            <option value="10">X</option>
+            <option value="11">XI</option>
+            <option value="12">XII</option>
           </select>
           <select
-            {...register("class", {
+            {...register("division", {
               required: {
                 value: true,
-                message: "Class is Required",
+                message: "Division is Required",
               },
             })}
             defaultValue=""
-            className="px-4 py-3 border rounded-md  ouline:none "
+            className={`${
+              errors.division ? "border border-red-500" : ""
+            } px-4 py-3 border rounded-md outline-none `}
           >
             <option disabled value="" className="text-gray-400">
               Select Division
@@ -104,35 +120,76 @@ const AddStudent = () => {
             <option value="E">E</option>
           </select>
           <input
+            {...register("roll", {
+              required: {
+                value: true,
+                message: "Roll is Required",
+              },
+            })}
             type="number"
-            placeholder="Enter Roll Number in Digits"
-            className="px-4 py-3 border rounded-md  ouline:none "
+            placeholder={`${
+              errors.roll ? errors.roll.message : "Enter Roll Number in Digits"
+            }`}
+            className={`${
+              errors.roll ? "placeholder:text-red-500" : ""
+            } px-4 py-3 border rounded-md outline-none `}
           />
         </div>
         <div className="grid grid-cols-6 gap-4 mt-8">
           <input
+            {...register("address1", {
+              required: {
+                value: true,
+                message: "Address is Required",
+              },
+            })}
             type="text"
-            className="col-span-3 px-4 py-3 border rounded-md  ouline:none"
-            placeholder="Address Line 1"
+            className={`${
+              errors.address1 ? "placeholder:text-red-500" : ""
+            } col-span-3 px-4 py-3 border rounded-md  outline-none`}
+            placeholder={`${
+              errors.address1 ? errors.address1.message : "Address Line 1"
+            }`}
           />
           <input
+            {...register("address2")}
             type="text"
-            className="col-span-3 px-4 py-3 border rounded-md  ouline:none"
+            className="col-span-3 px-4 py-3 border rounded-md  outline-none"
             placeholder="Address Line 2"
           />
           <input
+            {...register("landMark", {
+              required: {
+                value: true,
+                message: "LandMark is Required",
+              },
+            })}
             type="text"
-            className="col-span-2 px-4 py-3 border rounded-md  ouline:none"
+            className="col-span-2 px-4 py-3 border rounded-md  outline-none"
             placeholder="Landmark"
           />
           <input
+            {...register("city", {
+              required: {
+                value: true,
+                message: "City is Required",
+              },
+            })}
             type="text"
-            className="col-span-2 px-4 py-3 border rounded-md  ouline:none"
-            placeholder="City"
+            className={`${
+              errors.address1 ? "placeholder:text-red-500" : ""
+            } col-span-2 px-4 py-3 border rounded-md  outline-none`}
+            placeholder={`${errors.city ? errors.city.message : "City"}`}
           />
           <input
+            {...register("pin", {
+              required: {
+                value: true,
+                message: "pin is Required",
+              },
+            })}
             type="text"
-            className="col-span-2 px-4 py-3 border rounded-md  ouline:none"
+            className="col-span-2 px-4 py-3 border rounded-md  outline-none"
             placeholder="Pincode"
           />
         </div>
