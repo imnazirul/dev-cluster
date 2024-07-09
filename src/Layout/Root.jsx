@@ -5,10 +5,26 @@ import { NavLink, Outlet, useLocation, useNavigate } from "react-router-dom";
 import { LuListTodo } from "react-icons/lu";
 import "./style.css";
 import { useEffect } from "react";
+import { onAuthStateChanged } from "firebase/auth";
+import auth from "../firebase/firebase.config";
+import { useDispatch } from "react-redux";
+import { login } from "../features/auth/authSlice";
 
 const Root = () => {
   const location = useLocation();
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    const unSubscribe = onAuthStateChanged(auth, (currentUser) => {
+      // console.log("auth state changed on", currentUser);
+      dispatch(login(currentUser));
+    });
+
+    return () => {
+      unSubscribe();
+    };
+  }, [dispatch]);
 
   useEffect(() => {
     if (location.pathname === "/") {

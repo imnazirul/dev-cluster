@@ -6,6 +6,8 @@ import Root from "./Layout/Root";
 import AddStudent from "./Pages/AddStudent/AddStudent";
 import ManageStudents from "./Pages/ManageStudents/ManageStudents";
 import Login from "./Pages/Login/Login";
+import { Provider } from "react-redux";
+import store from "./app/store";
 
 const router = createBrowserRouter([
   {
@@ -30,6 +32,8 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <RouterProvider router={router} />{" "}
+    <Provider store={store}>
+      <RouterProvider router={router} />
+    </Provider>
   </React.StrictMode>
 );
