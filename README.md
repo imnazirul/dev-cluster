@@ -1,3 +1,3 @@
 # DevCluster
 
-**Live Site URL:** [www.hobby-cue.com](https://dev-cluster-react.web.app/)
+**Live Site URL:** [www.dev-cluster.com](https://dev-cluster-react.web.app/)
