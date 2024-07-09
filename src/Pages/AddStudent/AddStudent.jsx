@@ -1,17 +1,24 @@
 import { useForm } from "react-hook-form";
+import { useDispatch } from "react-redux";
+import { addStudent } from "../../features/students/studentsSlice";
+import toast from "react-hot-toast";
 
 const AddStudent = () => {
   const date = new Date().toDateString();
   const time = new Date().toLocaleTimeString();
+  const dispatch = useDispatch();
 
   const {
     register,
     handleSubmit,
     formState: { errors },
+    reset,
   } = useForm();
 
   const handleAddStudent = (data) => {
-    console.log(data);
+    dispatch(addStudent(data));
+    toast.success("Student Added Successfully!");
+    reset();
   };
 
   return (
@@ -85,18 +92,18 @@ const AddStudent = () => {
             <option disabled value="">
               Select Class
             </option>
-            <option value="1">I</option>
-            <option value="2">II</option>
-            <option value="3">III</option>
-            <option value="4">IV</option>
-            <option value="5">V</option>
-            <option value="6">VI</option>
-            <option value="7">VII</option>
-            <option value="8">VIII</option>
-            <option value="9">IX</option>
-            <option value="10">X</option>
-            <option value="11">XI</option>
-            <option value="12">XII</option>
+            <option value="I">I</option>
+            <option value="II">II</option>
+            <option value="III">III</option>
+            <option value="IV">IV</option>
+            <option value="V">V</option>
+            <option value="VI">VI</option>
+            <option value="VII">VII</option>
+            <option value="VIII">VIII</option>
+            <option value="IX">IX</option>
+            <option value="X">X</option>
+            <option value="XI">XI</option>
+            <option value="XII">XII</option>
           </select>
           <select
             {...register("division", {
