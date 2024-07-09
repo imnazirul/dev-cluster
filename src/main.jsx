@@ -9,6 +9,7 @@ import Login from "./Pages/Login/Login";
 import { Provider } from "react-redux";
 import store from "./app/store";
 import PrivateRoute from "./PrivateRoute/PrivateRoute";
+import AuthProvider from "./AuthProvider/AuthProvider";
 
 const router = createBrowserRouter([
   {
@@ -42,7 +43,9 @@ const router = createBrowserRouter([
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <Provider store={store}>
-      <RouterProvider router={router} />
+      <AuthProvider>
+        <RouterProvider router={router} />
+      </AuthProvider>
     </Provider>
   </React.StrictMode>
 );

@@ -5,26 +5,13 @@ import { NavLink, Outlet, useLocation, useNavigate } from "react-router-dom";
 import { LuListTodo } from "react-icons/lu";
 import "./style.css";
 import { useEffect } from "react";
-import { onAuthStateChanged } from "firebase/auth";
 import auth from "../firebase/firebase.config";
-import { useDispatch } from "react-redux";
-import { login, logout } from "../features/auth/authSlice";
+import toast, { Toaster } from "react-hot-toast";
+import { signOut } from "firebase/auth";
 
 const Root = () => {
   const location = useLocation();
   const navigate = useNavigate();
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    const unSubscribe = onAuthStateChanged(auth, (currentUser) => {
-      console.log("auth state changed on", currentUser);
-      dispatch(login(currentUser));
-    });
-
-    return () => {
-      unSubscribe();
-    };
-  }, [dispatch]);
 
   useEffect(() => {
     if (location.pathname === "/") {
@@ -32,9 +19,16 @@ const Root = () => {
     }
   }, [location.pathname, navigate]);
 
+  const handleLogout = () => {
+    signOut(auth).then(() => {
+      toast.success("Logout Successfully");
+    });
+  };
+
   return (
     <div className="font-ibm">
       <Navbar />
+      <Toaster />
       <div className="flex pt-20 gap-6">
         {!(location.pathname === "/login") && (
           <div className="px-5 h-[50vh] flex w-72 items-center">
@@ -61,7 +55,7 @@ const Root = () => {
               <li>
                 {" "}
                 <button
-                  onClick={() => dispatch(logout())}
+                  onClick={handleLogout}
                   className="flex w-full gap-2 items-center text-opacity-60 text-black hover:bg-[#F33823] hover:text-white px-2 py-2 rounded-md"
                 >
                   {" "}

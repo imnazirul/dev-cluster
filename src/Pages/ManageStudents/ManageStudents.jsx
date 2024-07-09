@@ -2,10 +2,19 @@ import { BiEditAlt } from "react-icons/bi";
 import { CiSearch } from "react-icons/ci";
 import { IoEyeOutline } from "react-icons/io5";
 import { RiDeleteBin6Line } from "react-icons/ri";
+import { useDispatch, useSelector } from "react-redux";
+import { deleteStudent } from "../../features/students/studentsSlice";
 
 const ManageStudents = () => {
   const date = new Date().toDateString();
   const time = new Date().toLocaleTimeString();
+  const students = useSelector((state) => state.students);
+  const dispatch = useDispatch();
+
+  const handleDeleteStudent = (id) => {
+    dispatch(deleteStudent(id));
+  };
+
   return (
     <div className="mt-10 w-full font-ibm px-8">
       <div className="flex items-center justify-between w-full">
@@ -46,150 +55,29 @@ const ManageStudents = () => {
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td className="py-3">Bruce Banner</td>
-              <td className="py-3">VI-A</td>
-              <td className="py-3">12</td>
-              <td className="flex py-3 justify-center gap-8 items-center">
-                <button className="hover:bg-gray-100 p-1 rounded-md text-[#F33823] text-[26px]">
-                  <IoEyeOutline />
-                </button>
-                <button className="hover:bg-gray-100 p-1 rounded-md text-[#F33823] text-[26px]">
-                  <BiEditAlt />
-                </button>
-                <button>
-                  <RiDeleteBin6Line className="hover:bg-gray-100 p-[6px] rounded-md text-[#F33823] text-4xl" />
-                </button>
-              </td>
-            </tr>
-            <tr>
-              <td className="py-3">Bruce Banner</td>
-              <td className="py-3">VI-A</td>
-              <td className="py-3">12</td>
-              <td className="flex py-3 justify-center gap-8 items-center">
-                <button className="hover:bg-gray-100 p-1 rounded-md text-[#F33823] text-[26px]">
-                  <IoEyeOutline />
-                </button>
-                <button className="hover:bg-gray-100 p-1 rounded-md text-[#F33823] text-[26px]">
-                  <BiEditAlt />
-                </button>
-                <button>
-                  <RiDeleteBin6Line className="hover:bg-gray-100 p-[6px] rounded-md text-[#F33823] text-4xl" />
-                </button>
-              </td>
-            </tr>
-            <tr>
-              <td className="py-3">Bruce Banner</td>
-              <td className="py-3">VI-A</td>
-              <td className="py-3">12</td>
-              <td className="flex py-3 justify-center gap-8 items-center">
-                <button className="hover:bg-gray-100 p-1 rounded-md text-[#F33823] text-[26px]">
-                  <IoEyeOutline />
-                </button>
-                <button className="hover:bg-gray-100 p-1 rounded-md text-[#F33823] text-[26px]">
-                  <BiEditAlt />
-                </button>
-                <button>
-                  <RiDeleteBin6Line className="hover:bg-gray-100 p-[6px] rounded-md text-[#F33823] text-4xl" />
-                </button>
-              </td>
-            </tr>
-            <tr>
-              <td className="py-3">Bruce Banner</td>
-              <td className="py-3">VI-A</td>
-              <td className="py-3">12</td>
-              <td className="flex py-3 justify-center gap-8 items-center">
-                <button className="hover:bg-gray-100 p-1 rounded-md text-[#F33823] text-[26px]">
-                  <IoEyeOutline />
-                </button>
-                <button className="hover:bg-gray-100 p-1 rounded-md text-[#F33823] text-[26px]">
-                  <BiEditAlt />
-                </button>
-                <button>
-                  <RiDeleteBin6Line className="hover:bg-gray-100 p-[6px] rounded-md text-[#F33823] text-4xl" />
-                </button>
-              </td>
-            </tr>
-            <tr>
-              <td className="py-3">Bruce Banner</td>
-              <td className="py-3">VI-A</td>
-              <td className="py-3">12</td>
-              <td className="flex py-3 justify-center gap-8 items-center">
-                <button className="hover:bg-gray-100 p-1 rounded-md text-[#F33823] text-[26px]">
-                  <IoEyeOutline />
-                </button>
-                <button className="hover:bg-gray-100 p-1 rounded-md text-[#F33823] text-[26px]">
-                  <BiEditAlt />
-                </button>
-                <button>
-                  <RiDeleteBin6Line className="hover:bg-gray-100 p-[6px] rounded-md text-[#F33823] text-4xl" />
-                </button>
-              </td>
-            </tr>
-            <tr>
-              <td className="py-3">Bruce Banner</td>
-              <td className="py-3">VI-A</td>
-              <td className="py-3">12</td>
-              <td className="flex py-3 justify-center gap-8 items-center">
-                <button className="hover:bg-gray-100 p-1 rounded-md text-[#F33823] text-[26px]">
-                  <IoEyeOutline />
-                </button>
-                <button className="hover:bg-gray-100 p-1 rounded-md text-[#F33823] text-[26px]">
-                  <BiEditAlt />
-                </button>
-                <button>
-                  <RiDeleteBin6Line className="hover:bg-gray-100 p-[6px] rounded-md text-[#F33823] text-4xl" />
-                </button>
-              </td>
-            </tr>
-            <tr>
-              <td className="py-3">Bruce Banner</td>
-              <td className="py-3">VI-A</td>
-              <td className="py-3">12</td>
-              <td className="flex py-3 justify-center gap-8 items-center">
-                <button className="hover:bg-gray-100 p-1 rounded-md text-[#F33823] text-[26px]">
-                  <IoEyeOutline />
-                </button>
-                <button className="hover:bg-gray-100 p-1 rounded-md text-[#F33823] text-[26px]">
-                  <BiEditAlt />
-                </button>
-                <button>
-                  <RiDeleteBin6Line className="hover:bg-gray-100 p-[6px] rounded-md text-[#F33823] text-4xl" />
-                </button>
-              </td>
-            </tr>
-            <tr>
-              <td className="py-3">Bruce Banner</td>
-              <td className="py-3">VI-A</td>
-              <td className="py-3">12</td>
-              <td className="flex py-3 justify-center gap-8 items-center">
-                <button className="hover:bg-gray-100 p-1 rounded-md text-[#F33823] text-[26px]">
-                  <IoEyeOutline />
-                </button>
-                <button className="hover:bg-gray-100 p-1 rounded-md text-[#F33823] text-[26px]">
-                  <BiEditAlt />
-                </button>
-                <button>
-                  <RiDeleteBin6Line className="hover:bg-gray-100 p-[6px] rounded-md text-[#F33823] text-4xl" />
-                </button>
-              </td>
-            </tr>
-            <tr>
-              <td className="py-3">Bruce Banner</td>
-              <td className="py-3">VI-A</td>
-              <td className="py-3">12</td>
-              <td className="flex py-3 justify-center gap-8 items-center">
-                <button className="hover:bg-gray-100 p-1 rounded-md text-[#F33823] text-[26px]">
-                  <IoEyeOutline />
-                </button>
-                <button className="hover:bg-gray-100 p-1 rounded-md text-[#F33823] text-[26px]">
-                  <BiEditAlt />
-                </button>
-                <button>
-                  <RiDeleteBin6Line className="hover:bg-gray-100 p-[6px] rounded-md text-[#F33823] text-4xl" />
-                </button>
-              </td>
-            </tr>
+            {" "}
+            {students.map((student) => (
+              <tr key={student.id}>
+                <td className="py-3">
+                  {student.firstName} {student.middleName} {student.lastName}
+                </td>
+                <td className="py-3">
+                  {student.class}-{student.division}
+                </td>
+                <td className="py-3">{student.roll}</td>
+                <td className="flex py-3 justify-center gap-8 items-center">
+                  <button className="hover:bg-gray-100 p-1 rounded-md text-[#F33823] text-[26px]">
+                    <IoEyeOutline />
+                  </button>
+                  <button className="hover:bg-gray-100 p-1 rounded-md text-[#F33823] text-[26px]">
+                    <BiEditAlt />
+                  </button>
+                  <button onClick={() => handleDeleteStudent(student.id)}>
+                    <RiDeleteBin6Line className="hover:bg-gray-100 p-[6px] rounded-md text-[#F33823] text-4xl" />
+                  </button>
+                </td>
+              </tr>
+            ))}
           </tbody>
         </table>
       </div>
