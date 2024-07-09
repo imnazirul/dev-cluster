@@ -8,6 +8,7 @@ import ManageStudents from "./Pages/ManageStudents/ManageStudents";
 import Login from "./Pages/Login/Login";
 import { Provider } from "react-redux";
 import store from "./app/store";
+import PrivateRoute from "./PrivateRoute/PrivateRoute";
 
 const router = createBrowserRouter([
   {
@@ -16,11 +17,19 @@ const router = createBrowserRouter([
     children: [
       {
         path: "/add_student",
-        element: <AddStudent />,
+        element: (
+          <PrivateRoute>
+            <AddStudent />
+          </PrivateRoute>
+        ),
       },
       {
         path: "/manage_students",
-        element: <ManageStudents />,
+        element: (
+          <PrivateRoute>
+            <ManageStudents />
+          </PrivateRoute>
+        ),
       },
       {
         path: "/login",

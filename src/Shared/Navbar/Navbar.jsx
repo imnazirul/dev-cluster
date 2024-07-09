@@ -3,7 +3,6 @@ import { useSelector } from "react-redux";
 
 const Navbar = () => {
   const user = useSelector((state) => state.auth);
-  console.log(user);
 
   return (
     <div className="fixed w-full backdrop-blur-xl bg-white bg-opacity-40 ">

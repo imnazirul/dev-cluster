@@ -8,7 +8,7 @@ import { useEffect } from "react";
 import { onAuthStateChanged } from "firebase/auth";
 import auth from "../firebase/firebase.config";
 import { useDispatch } from "react-redux";
-import { login } from "../features/auth/authSlice";
+import { login, logout } from "../features/auth/authSlice";
 
 const Root = () => {
   const location = useLocation();
@@ -17,7 +17,7 @@ const Root = () => {
 
   useEffect(() => {
     const unSubscribe = onAuthStateChanged(auth, (currentUser) => {
-      // console.log("auth state changed on", currentUser);
+      console.log("auth state changed on", currentUser);
       dispatch(login(currentUser));
     });
 
@@ -60,7 +60,10 @@ const Root = () => {
               </li>
               <li>
                 {" "}
-                <button className="flex w-full gap-2 items-center text-opacity-60 text-black hover:bg-[#F33823] hover:text-white px-2 py-2 rounded-md">
+                <button
+                  onClick={() => dispatch(logout())}
+                  className="flex w-full gap-2 items-center text-opacity-60 text-black hover:bg-[#F33823] hover:text-white px-2 py-2 rounded-md"
+                >
                   {" "}
                   <IoLogOutOutline className="text-2xl" /> Logout
                 </button>
